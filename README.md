@@ -13,6 +13,12 @@ smalruby3-develop is a developement environment for Smalruby 3.
 
  - Windows: https://gitforwindows.org/
  - Mac: open Terminal.app and run `xcode-select --install`
+ 
+Then run below command to clone. `--recursive` is important to clone submodules.
+
+```
+git clone --recursive https://github.com/smalruby/smalruby3-develop.git
+```
 
 ## Build docker image
 

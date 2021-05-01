@@ -18,11 +18,13 @@ smalruby3-develop は、スモウルビー3をすぐに開発できるように�
  - Windows: https://gitforwindows.org/
  - Mac: ターミナルアプリを起動して、`xcode-select --install` コマンドを実行後、画面の指示に従ってインストールしてください。
 
-Gitをインストールできたら、次のコマンドを実行してこのレポジトリをcloneします。
+Gitをインストールできたら、次のコマンドを実行してこのレポジトリをcloneします。 `--recursive` を忘れないでください。submoduleをcloneするために必要です。
 
 ```
-git clone https://github.com/smalruby/smalruby3-develop.git
+git clone --recursive https://github.com/smalruby/smalruby3-develop.git
 ```
+
+もし `--recursive` をつけ忘れたら `git submodule update --init --recursive` を実行すると submodule を clone できます。
 
 ## 開発環境の構築
 
