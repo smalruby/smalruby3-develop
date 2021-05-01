@@ -1,0 +1,13 @@
+version: '3'
+services:
+  smalruby3-gui:
+    build: .
+    environment:
+      SMALRUBY3_HOST: 0.0.0.0
+      PORT: 8601
+    working_dir: /app/smalruby3-gui
+    command: npm start
+    volumes: 
+      - .:/app
+    ports:
+      - 0.0.0.0:8601:8601
