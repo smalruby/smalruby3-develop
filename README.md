@@ -18,12 +18,16 @@ smalruby3-develop is a developement environment for Smalruby 3.
 
 ```
 $ docker-compose build
+$ docker-compose run smalruby3-gui bash -c 'cd /app/scratch-vm && npm install && npm run build && npm link'
+$ docker-compose run smalruby3-gui bash -c 'cd /app/smalruby3-gui && npm install && npm link scratch-vm'
 ```
 
 ## Boot smalruby3-gui
 
 ```
-$ docker-compose up -d
+$ docker-compose up
+(snip)
+smalruby3-gui_1  | ℹ ｢wdm｣: Compiled successfully.
 ```
 
 Open http://127.0.0.1:8601 on your web browser.

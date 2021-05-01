@@ -30,13 +30,19 @@ git clone https://github.com/smalruby/smalruby3-develop.git
 
 ```
 $ docker-compose build
+$ docker-compose run smalruby3-gui bash -c 'cd /app/scratch-vm && npm install && npm run build && npm link'
+$ docker-compose run smalruby3-gui bash -c 'cd /app/smalruby3-gui && npm install && npm link scratch-vm'
 ```
 
 ### smalruby3-guiの起動
 
 ```
-$ docker-compose up -d
+$ docker-compose up
+(省略)
+smalruby3-gui_1  | ℹ ｢wdm｣: Compiled successfully.
 ```
+
+しばらく待ち、↑のように `smalruby3-gui_1  | ℹ ｢wdm｣: Compiled successfully.` と表示されたら OK です。
 
 ウェブブラウザで http://127.0.0.1:8601 を開けばスモウルビー3を操作できます。
 
