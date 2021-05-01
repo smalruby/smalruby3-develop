@@ -1,3 +1,6 @@
 [submodule "scratch-vm"]
 	path = scratch-vm
 	url = https://github.com/smalruby/scratch-vm.git
+[submodule "smalruby3-gui"]
+	path = smalruby3-gui
+	url = https://github.com/smalruby/smalruby3-gui.git
