@@ -1,6 +1,6 @@
-## スモウルビー3用の開発環境
+## スモウルビー用の開発環境
 
-smalruby3-develop は、スモウルビー3をすぐに開発できるようにするためのDockerの設定ファイルや各種レポジトリを集めたものです。Dockerとgitをインストールするだけで、好きなエディターでスモウルビー3を開発できるようになります。
+smalruby3-develop は、スモウルビーをすぐに開発できるようにするためのDockerの設定ファイルや各種レポジトリを集めたものです。Dockerとgitをインストールするだけで、好きなエディターでスモウルビーを開発できるようになります。
 
 ## 準備
 
@@ -32,14 +32,14 @@ git clone --recursive https://github.com/smalruby/smalruby3-develop.git
 
 ```
 $ docker-compose build
-$ docker-compose run smalruby3-gui bash -c 'cd /app/scratch-vm && npm install && npm run build && npm link'
-$ docker-compose run smalruby3-gui bash -c 'cd /app/smalruby3-gui && npm install && npm link scratch-vm'
+$ docker-compose run gui bash -c 'cd /app/scratch-vm && npm install && npm run build && npm link'
+$ docker-compose run gui bash -c 'cd /app/smalruby3-gui && npm install && npm link scratch-vm'
 ```
 
-### smalruby3-guiの起動
+### スモウルビーの起動
 
 ```
-$ docker-compose up
+$ docker-compose up gui
 (省略)
 smalruby3-gui_1  | ℹ ｢wdm｣: Compiled successfully.
 ```

@@ -24,8 +24,8 @@ git clone --recursive https://github.com/smalruby/smalruby3-develop.git
 
 ```
 $ docker-compose build
-$ docker-compose run smalruby3-gui bash -c 'cd /app/scratch-vm && npm install && npm run build && npm link'
-$ docker-compose run smalruby3-gui bash -c 'cd /app/smalruby3-gui && npm install && npm link scratch-vm'
+$ docker-compose run smalruby3-gui bash -c 'cd /app/gui/scratch-vm && npm install && npm run build && npm link'
+$ docker-compose run smalruby3-gui bash -c 'cd /app/gui/smalruby3-gui && npm install && npm link scratch-vm'
 ```
 
 ## Boot smalruby3-gui
