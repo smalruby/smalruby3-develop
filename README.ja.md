@@ -31,9 +31,9 @@ git clone --recursive https://github.com/smalruby/smalruby3-develop.git
 ### Dockerイメージの構築
 
 ```
-$ docker-compose build
-$ docker-compose run gui bash -c 'cd /app/scratch-vm && npm install && npm run build && npm link'
-$ docker-compose run gui bash -c 'cd /app/smalruby3-gui && npm install && npm link scratch-vm'
+$ docker-compose build gui
+$ docker-compose run gui bash -c 'cd /app/gui/scratch-vm && npm install && npm run build && npm link'
+$ docker-compose run gui bash -c 'cd /app/gui/smalruby3-gui && npm install && npm link scratch-vm'
 ```
 
 ### スモウルビーの起動
@@ -53,9 +53,9 @@ smalruby3-gui_1  | ℹ ｢wdm｣: Compiled successfully.
 ### smalruby3-guiの停止
 
 ```
-$ docker-compose stop
+$ docker-compose stop gui
 ```
 
 ## 開発方法
 
-smalruby3-gui/README.md と scratch-vm/README.md をご覧ください。
+gui/smalruby3-gui/README.md と gui/scratch-vm/README.md をご覧ください。

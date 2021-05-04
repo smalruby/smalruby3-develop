@@ -23,7 +23,7 @@ git clone --recursive https://github.com/smalruby/smalruby3-develop.git
 ## Build docker image
 
 ```
-$ docker-compose build
+$ docker-compose build gui
 $ docker-compose run smalruby3-gui bash -c 'cd /app/gui/scratch-vm && npm install && npm run build && npm link'
 $ docker-compose run smalruby3-gui bash -c 'cd /app/gui/smalruby3-gui && npm install && npm link scratch-vm'
 ```
@@ -31,13 +31,19 @@ $ docker-compose run smalruby3-gui bash -c 'cd /app/gui/smalruby3-gui && npm ins
 ## Boot smalruby3-gui
 
 ```
-$ docker-compose up
+$ docker-compose up gui
 (snip)
 smalruby3-gui_1  | ℹ ｢wdm｣: Compiled successfully.
 ```
 
 Open http://127.0.0.1:8601 on your web browser.
 
+### Stop smalruby3-gui
+
+```
+$ docker-compose stop gui
+```
+
 ## Develop
 
-see smalruby3-gui/README.md and scratch-vm/README.md.
+see gui/smalruby3-gui/README.md and gui/scratch-vm/README.md.
