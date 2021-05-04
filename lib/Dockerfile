@@ -5,27 +5,33 @@ LABEL maintaner "Kouji Takao"
 ENV LANG C.UTF-8
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN set -eux && \
-  apt-get update && \
-  apt-get install -y --no-install-recommends \
-    build-essential \
-    git \
-    curl \
-    less \
-    lv \
-    vim \
-    libsdl1.2-dev \
-    libsdl-image1.2-dev \
-    libsdl-mixer1.2-dev \
-    timidity \
-    libsdl-ttf2.0-dev \
-    libsdl-sge-dev \
-    fonts-horai-umefont \
-    fonts-ipafont \
-    xauth \
-    xvfb \
-    x11vnc \
-    xterm
+RUN apt-get update
+
+RUN apt-get install -y --no-install-recommends \
+  build-essential \
+  git \
+  curl \
+  less \
+  lv \
+  vim
+
+RUN apt-get install -y --no-install-recommends \
+  libsdl1.2-dev \
+  libsdl-image1.2-dev \
+  libsdl-mixer1.2-dev \
+  timidity \
+  libsdl-ttf2.0-dev \
+  libsdl-sge-dev \
+  fonts-horai-umefont \
+  fonts-ipafont
+
+RUN apt-get install -y --no-install-recommends \
+  xauth \
+  xvfb \
+  x11vnc \
+  xterm \
+  novnc \
+  websockify
 
 RUN mkdir -p /root/.vnc/ && \
   x11vnc -storepasswd smalruby /root/.vnc/passwd
