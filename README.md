@@ -31,8 +31,8 @@ git config --global core.autocrlf true <- above
 ```
 git config core.autocrlf input
 $ docker-compose build gui
-$ docker-compose run smalruby3-gui bash -c "cd /app/gui/scratch-vm && npm install && npm run build && npm link"
-$ docker-compose run smalruby3-gui bash -c "cd /app/gui/smalruby3-gui && npm install && npm link scratch-vm"
+$ docker-compose run --rm smalruby3-gui bash -c "cd /app/gui/scratch-vm && npm install && npm run build && npm link"
+$ docker-compose run --rm smalruby3-gui bash -c "cd /app/gui/smalruby3-gui && npm install && npm link scratch-vm"
 ```
 
 ## Boot smalruby3-gui

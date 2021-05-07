@@ -41,8 +41,8 @@ git config --global core.autocrlf true
 ```
 git config core.autocrlf input
 $ docker-compose build gui
-$ docker-compose run gui bash -c "cd /app/gui/scratch-vm && npm install && npm run build && npm link"
-$ docker-compose run gui bash -c "cd /app/gui/smalruby3-gui && npm install && npm link scratch-vm"
+$ docker-compose run --rm gui bash -c "cd /app/gui/scratch-vm && npm install && npm run build && npm link"
+$ docker-compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && npm install && npm link scratch-vm"
 ```
 
 Windows で docker-compose build に失敗した場合に `docker system prune -af` で作業途中のイメージをすべて削除してから再度 docker-compose build を行うことで問題を解消できたことがありました。
