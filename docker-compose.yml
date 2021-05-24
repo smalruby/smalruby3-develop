@@ -3,8 +3,10 @@ services:
   gui:
     build: gui
     environment:
-      SMALRUBY3_HOST: 0.0.0.0
-      PORT: 8601
+      - SMALRUBY3_HOST=0.0.0.0
+      - PORT=8601
+      - NODE_ENV
+      - DEBUG
     working_dir: /app/gui/smalruby3-gui
     command: npm start
     volumes:

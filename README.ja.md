@@ -61,6 +61,14 @@ smalruby3-gui_1  | ℹ ｢wdm｣: Compiled successfully.
 
 これだけで開発環境が整います。
 
+また、デバッグモードで起動するには `--env-file ./config/.env.debug` を指定します。
+
+```
+$ docker-compose --env-file ./config/.env.debug up gui
+(省略)
+smalruby3-gui_1  | ℹ ｢wdm｣: Compiled successfully.
+```
+
 ### smalruby3-guiの停止
 
 ```
