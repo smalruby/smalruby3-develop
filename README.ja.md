@@ -39,7 +39,7 @@ git config --global core.autocrlf true
 ### Dockerイメージの構築
 
 ```
-git config core.autocrlf input
+$ git config core.autocrlf input
 $ docker-compose build gui
 $ docker-compose run --rm gui bash -c "cd /app/gui/scratch-vm && npm install && npm run build && npm link"
 $ docker-compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && npm install && npm link scratch-vm"
