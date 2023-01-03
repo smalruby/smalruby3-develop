@@ -1,28 +1,26 @@
-FROM node:14
+FROM node:14-slim
 LABEL maintaner "Kouji Takao, Seiya Aozasa"
 
 ENV LANG C.UTF-8
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN set -eux && \
-  apt-get update && \
-  apt-get install -y --no-install-recommends \
+RUN set -eux \
+  && apt update \
+  && apt install -y --no-install-recommends \
     build-essential \
+    ca-certificates \
     git \
     curl \
     less \
     lv \
-    vim
+    vim \
+  && rm -rf /var/lib/apt/lists/*
 
 COPY scratch-vm/package.json scratch-vm/package-lock.json /app/gui/scratch-vm/
-RUN cd /app/gui/scratch-vm && npm install
-COPY scratch-vm /app/gui/scratch-vm
-RUN cd /app/gui/scratch-vm && npm link
-
 COPY smalruby3-gui/package.json smalruby3-gui/package-lock.json /app/gui/smalruby3-gui/
-RUN cd /app/gui/smalruby3-gui && npm install
-COPY smalruby3-gui /app/gui/smalruby3-gui
-RUN cd /app/gui/smalruby3-gui && npm link scratch-vm
+
+RUN cd /app/gui/scratch-vm && npm install && npm link
+RUN cd /app/gui/smalruby3-gui && npm install && npm link scratch-vm
 
 WORKDIR /app/gui/smalruby3-gui
 
