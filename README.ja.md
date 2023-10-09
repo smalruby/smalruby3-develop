@@ -39,10 +39,9 @@ git config --global core.autocrlf true
 ### Dockerイメージの構築
 
 ```
-$ git config core.autocrlf input
-$ docker-compose build gui
-$ docker-compose run --rm gui bash -c "cd /app/gui/scratch-vm && npm install && npm run build && npm link"
-$ docker-compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && npm install && npm link scratch-vm"
+$ docker compose build gui
+$ docker compose run --rm gui bash -c "cd /app/gui/scratch-vm && npm install && npm run build && npm link"
+$ docker compose run -e DEBUG=1 --rm gui bash -c "cd /app/gui/smalruby3-gui && npm install && npm link scratch-vm"
 ```
 
 Windows で docker-compose build に失敗した場合に `docker system prune -af` で作業途中のイメージをすべて削除してから再度 docker-compose build を行うことで問題を解消できたことがありました。
@@ -50,7 +49,7 @@ Windows で docker-compose build に失敗した場合に `docker system prune -
 ### スモウルビーの起動
 
 ```
-$ docker-compose up gui
+$ docker compose up gui
 (省略)
 smalruby3-gui_1  | ℹ ｢wdm｣: Compiled successfully.
 ```
@@ -64,7 +63,7 @@ smalruby3-gui_1  | ℹ ｢wdm｣: Compiled successfully.
 また、デバッグモードで起動するには `--env-file ./config/.env.debug` を指定します。
 
 ```
-$ docker-compose --env-file ./config/.env.debug up gui
+$ docker compose --env-file ./config/.env.debug up gui
 (省略)
 smalruby3-gui_1  | ℹ ｢wdm｣: Compiled successfully.
 ```
@@ -72,7 +71,7 @@ smalruby3-gui_1  | ℹ ｢wdm｣: Compiled successfully.
 ### smalruby3-guiの停止
 
 ```
-$ docker-compose stop gui
+$ docker compose stop gui
 ```
 
 ## 開発方法
