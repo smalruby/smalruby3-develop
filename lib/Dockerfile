@@ -5,9 +5,13 @@ LABEL maintaner "Kouji Takao"
 ENV LANG C.UTF-8
 ENV DEBIAN_FRONTEND noninteractive
 
+RUN rm -f /etc/apt/sources.list \
+  && echo "deb http://archive.debian.org/debian/ jessie main" | tee -a /etc/apt/sources.list \
+  && echo "deb http://archive.debian.org/debian-security/ jessie/updates main" | tee -a /etc/apt/sources.list
+
 RUN apt-get update
 
-RUN apt-get install -y --no-install-recommends \
+RUN apt-get install -y --force-yes --no-install-recommends \
   build-essential \
   git \
   curl \
@@ -15,7 +19,7 @@ RUN apt-get install -y --no-install-recommends \
   lv \
   vim
 
-RUN apt-get install -y --no-install-recommends \
+RUN apt-get install -y --force-yes --no-install-recommends \
   libsdl1.2-dev \
   libsdl-image1.2-dev \
   libsdl-mixer1.2-dev \
@@ -25,7 +29,7 @@ RUN apt-get install -y --no-install-recommends \
   fonts-horai-umefont \
   fonts-ipafont
 
-RUN apt-get install -y --no-install-recommends \
+RUN apt-get install -y --force-yes --no-install-recommends \
   xauth \
   xvfb \
   x11vnc \
