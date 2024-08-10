@@ -1,0 +1,63 @@
+// cSpell Settings
+{
+  // Version of the setting file.  Always 0.2
+  "version": "0.2",
+  // language - current active spelling language
+  "language": "en",
+  // words - list of words to be always considered correct
+  "words": [
+    "ändere",
+    "Antwort",
+    "autocrlf",
+    "bindall",
+    "blockly",
+    "blocksonly",
+    "bmpfile",
+    "bowser",
+    "caturday",
+    "changevariableby",
+    "chom",
+    "CHROMEDRIVER",
+    "cimg",
+    "commitlint",
+    "compatibilitytesting",
+    "crossorigin",
+    "currupt",
+    "dapjs",
+    "defaultsdeep",
+    "Deutsch",
+    "DOCKERHUB",
+    "Fühlen",
+    "godirect",
+    "hatti",
+    "hoverable",
+    "Invisibles",
+    "javascripts",
+    "keymirror",
+    "Kostüme",
+    "lcov",
+    "microbit",
+    "minilog",
+    "mystuff",
+    "noconflict",
+    "nodemodules",
+    "nvmrc",
+    "omggif",
+    "paddleball",
+    "papaparse",
+    "peaceiris",
+    "pify",
+    "Prefs",
+    "Retireve",
+    "rssi",
+    "scratchfoundation",
+    "Skripte",
+    "smalruby",
+    "Variablen",
+    "wagoid"
+  ],
+  // flagWords - list of words to be always considered incorrect
+  // This is useful for offensive words and common spelling errors.
+  // For example "hte" should be "the"
+  "flagWords": []
+}
