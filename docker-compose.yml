@@ -1,6 +1,6 @@
-version: '3'
 services:
   gui:
+    platform: linux/amd64
     build: gui
     environment:
       - SMALRUBY3_HOST=0.0.0.0
@@ -10,14 +10,33 @@ services:
     working_dir: /app/gui/smalruby3-gui
     command: npm start
     volumes:
-      - .:/app
+      - type: bind
+        source: .
+        target: /app
+      - type: volume
+        source: root_npm
+        target: /root/.npm
+      - type: volume
+        source: scratch-vm_node_modules
+        target: /app/gui/scratch-vm/node_modules
+      - type: volume
+        source: smalruby3-gui_node_modules
+        target: /app/gui/smalruby3-gui/node_modules
     ports:
       - 0.0.0.0:8601:8601
   lib:
+    platform: linux/amd64
     build: lib
     working_dir: /app/lib/smalruby3
     command: /app/lib/entrypoint.sh
     volumes:
-      - .:/app
+      - type: bind
+        source: .
+        target: /app
     ports:
       - 0.0.0.0:15900:5900
+
+volumes:
+  root_npm:
+  scratch-vm_node_modules:
+  smalruby3-gui_node_modules:
