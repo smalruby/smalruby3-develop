@@ -58,7 +58,7 @@ docker compose up gui
 
 しばらく待ち、↑のように `smalruby3-gui_1  | ℹ ｢wdm｣: Compiled successfully.` と表示されたら OK です。
 
-ウェブブラウザで http://localhost:8601 を開けばスモウルビー3を操作できます。
+ウェブブラウザで <http://localhost:8601> を開けばスモウルビー3を操作できます。
 
 これだけで開発環境が整います。
 
