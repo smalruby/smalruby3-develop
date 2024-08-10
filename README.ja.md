@@ -8,16 +8,16 @@ smalruby3-develop は、スモウルビーをすぐに開発できるように�
 
 お使いのOSに合わせて、以下のソフトウェアをインストールしてください。
 
-- Windows: <https://www.docker.com/docker-windows>
-  - Docker をインストールする前に [Windows 10 用 Windows Subsystem for Linux のインストール ガイド](https://docs.microsoft.com/ja-jp/windows/wsl/install-win10) に従って WSL2 をインストールしてください。
-- Mac: <https://www.docker.com/docker-mac>
+- Windows: <https://www.docker.com/products/docker-desktop/>
+  - Docker をインストールする前に [WSL を使用して Windows に Linux をインストールする方法](https://learn.microsoft.com/ja-jp/windows/wsl/install) に従って WSL (WSL2) をインストールしてください。
+- macOS: <https://www.docker.com/products/docker-desktop/>
 
 ### Gitのインストールとソースコードのclone
 
 お使いのOSに合わせて、Gitをインストールしてください。
 
 - Windows: <https://gitforwindows.org/>
-- Mac: ターミナルアプリを起動して、`xcode-select --install` コマンドを実行後、画面の指示に従ってインストールしてください。
+- macOS: ターミナルアプリを起動して、`xcode-select --install` コマンドを実行後、画面の指示に従ってインストールしてください。
 
 Gitをインストールできたら、次のコマンドを実行してこのレポジトリをcloneします。 `--recursive` を忘れないでください。submoduleをcloneするために必要です。また Windows の場合は C:\Users\<ユーザー名>\source\repos 以下で実行すると良いでしょう。このとき source フォルダとその中の repos フォルダがない場合はそれらを作成してください。
 
@@ -41,8 +41,9 @@ git config --global core.autocrlf true
 
 ```shell
 docker compose build gui
-docker compose run --rm gui bash -c "cd /app/gui/scratch-vm && npm install && npm run build && npm link"
-docker compose run -e DEBUG=1 --rm gui bash -c "cd /app/gui/smalruby3-gui && npm install && npm link scratch-vm"
+docker compose run --rm gui bash
+# (しばらくして、以下のようにbashが起動したらexitコマンドを実行します)
+# root@592ae4944bb8:/app/gui/smalruby3-gui# exit
 ```
 
 Windows で docker-compose build に失敗した場合に `docker system prune -af` で作業途中のイメージをすべて削除してから再度 docker-compose build を行うことで問題を解消できたことがありました。
