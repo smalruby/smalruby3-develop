@@ -23,7 +23,7 @@ git config --global core.autocrlf
 git config --global core.autocrlf input
 git clone --recursive https://github.com/smalruby/smalruby3-develop.git
 
-git config --global core.autocrlf true <- above
+git config --global core.autocrlf true # <- above
 ```
 
 ## Build docker image
