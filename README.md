@@ -1,24 +1,24 @@
-## Smalruby 3 Development Environment
+# Smalruby 3 Development Environment
 
-smalruby3-develop is a developement environment for Smalruby 3.
+smalruby3-develop is a development environment for Smalruby 3.
 
 ## Prepare
 
 ### Install docker
 
- - Windows: https://www.docker.com/docker-windows
- - Mac: https://www.docker.com/docker-mac
+- <https://www.docker.com/products/docker-desktop/>
 
 ### Install git and clone
 
- - Windows: https://gitforwindows.org/
- - Mac: open Terminal.app and run `xcode-select --install`
+- Windows: <https://gitforwindows.org/>
+- macOS: open Terminal.app and run `xcode-select --install`
 
 Then run below command to clone. `--recursive` is important to clone submodules.
 
-```
+```shell
 git config --global core.autocrlf
-true <- remember
+# (output)
+# true <- remember
 
 git config --global core.autocrlf input
 git clone --recursive https://github.com/smalruby/smalruby3-develop.git
@@ -28,34 +28,37 @@ git config --global core.autocrlf true <- above
 
 ## Build docker image
 
-```
-$ docker compose build gui
-$ docker compose run --rm gui bash -c "cd /app/gui/scratch-vm && npm install && npm run build && npm link"
-$ docker compose run -e DEBUG=1 --rm gui bash -c "cd /app/gui/smalruby3-gui && npm install && npm link scratch-vm"
+```shell
+docker compose build gui
+docker compose run --rm gui bash
+# (Wait a minutes, output below. Then hit 'exit' to quit)
+# root@592ae4944bb8:/app/gui/smalruby3-gui# exit
 ```
 
 ## Boot smalruby3-gui
 
-```
-$ docker compose up gui
-(snip)
-smalruby3-gui_1  | ℹ ｢wdm｣: Compiled successfully.
+```shell
+docker compose up gui
+# (output)
+# (snip)
+# smalruby3-gui_1  | ℹ ｢wdm｣: Compiled successfully.
 ```
 
-Open http://localhost:8601 on your web browser.
+Open <http://localhost:8601> on your web browser.
 
 For debug, specify `--env-file ./config/.env.debug`.
 
-```
-$ docker compose --env-file ./config/.env.debug up gui
-(snip)
-smalruby3-gui_1  | ℹ ｢wdm｣: Compiled successfully.
+```shell
+docker compose --env-file ./config/.env.debug up gui
+# (output)
+# (snip)
+# smalruby3-gui_1  | ℹ ｢wdm｣: Compiled successfully.
 ```
 
 ### Stop smalruby3-gui
 
-```
-$ docker compose stop gui
+```shell
+docker compose stop gui
 ```
 
 ## Develop
