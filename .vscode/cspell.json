@@ -19,6 +19,8 @@
     "chom",
     "CHROMEDRIVER",
     "cimg",
+    "colour",
+    "Colours",
     "commitlint",
     "compatibilitytesting",
     "crossorigin",
@@ -36,6 +38,8 @@
     "keymirror",
     "Kostüme",
     "lcov",
+    "Makey",
+    "makeymakey",
     "microbit",
     "minilog",
     "mystuff",
@@ -50,14 +54,17 @@
     "pify",
     "pngjs",
     "Prefs",
+    "reimplementation",
     "Retireve",
     "rssi",
     "scratchfoundation",
     "Shounendan",
     "Skripte",
     "smalruby",
+    "unfullscreen",
     "Variablen",
-    "wagoid"
+    "wagoid",
+    "whenflagclicked"
   ],
   // flagWords - list of words to be always considered incorrect
   // This is useful for offensive words and common spelling errors.
