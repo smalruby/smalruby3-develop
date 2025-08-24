@@ -2,3 +2,5 @@
 .DS_Store
 *~
 /gui/built-*
+.serena/cache
+.claude/settings.local.json

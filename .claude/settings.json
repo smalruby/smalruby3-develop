@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__serena__find_file",
+      "mcp__serena__get_symbols_overview",
+      "mcp__serena__write_memory",
+      "Bash(npm run lint:*)",
+      "Bash(npm run:*)",
+      "Bash(docker compose run:*)",
+      "Bash(git add:*)"
+    ],
+    "deny": [],
+    "ask": []
+  },
+  "env": {
+    "BASH_DEFAULT_TIMEOUT_MS": "600000"
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh",
+    "padding": 0 // Optional: set to 0 to let status line go to edge
+  }
+}
