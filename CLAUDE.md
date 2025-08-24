@@ -132,6 +132,32 @@ The project uses different testing frameworks for different components:
 
 Note: The smalruby3-gui package.json contains merge conflict markers from upstream scratch-gui integration. These should be resolved before making changes to the GUI component.
 
+## GitHub Operations
+
+**IMPORTANT**: All GitHub operations (issues, pull requests, comments, etc.) must be performed against the Smalruby organization repositories, NOT the upstream Scratch Foundation repositories.
+
+### Correct Repository URLs
+- **scratch-vm**: https://github.com/smalruby/scratch-vm
+- **smalruby3-gui**: https://github.com/smalruby/smalruby3-gui
+
+### Incorrect Repository URLs (DO NOT USE)
+- ❌ https://github.com/scratchfoundation/scratch-vm
+- ❌ https://github.com/scratchfoundation/scratch-gui
+
+### Command Examples
+```bash
+# Correct - Create issue in Smalruby repository
+gh issue create --repo smalruby/scratch-vm --title "Issue title" --body "Issue body"
+
+# Correct - Create PR in Smalruby repository
+gh pr create --repo smalruby/scratch-vm --title "PR title" --body "PR body"
+
+# Incorrect - Avoid operations on Scratch Foundation repositories
+gh issue create --repo scratchfoundation/scratch-vm  # DON'T DO THIS
+```
+
+When working with submodules (gui/scratch-vm and gui/smalruby3-gui), always ensure GitHub operations target the corresponding Smalruby fork, not the upstream Scratch Foundation repository.
+
 ## Dependencies
 
 - Node.js for JavaScript components
