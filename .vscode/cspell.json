@@ -82,6 +82,7 @@
     "Skripte",
     "smalrubot",
     "smalruby",
+    "startaudiocontext",
     "statusline",
     "Substack",
     "unfullscreen",
@@ -97,5 +98,16 @@
   // flagWords - list of words to be always considered incorrect
   // This is useful for offensive words and common spelling errors.
   // For example "hte" should be "the"
-  "flagWords": []
+  "flagWords": [],
+  "ignorePaths": [
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/.git/**",
+    "**/.hg/**",
+    "**/.svn/**",
+    "**/.DS_Store/**",
+    "**/Thumbs.db/**"
+  ]
 }
