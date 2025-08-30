@@ -80,6 +80,7 @@ docker compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && npm run build"
 # Run lint
 docker compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && npm run test:lint" # all
 docker compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && npm exec eslint your-file1.js your-file2.js" # specific
+docker compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && npm exec eslint --fix your-file1.js your-file2.js" # specific and fix
 
 # Run tests
 docker compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && npm test" # lint, unit, build, integration
@@ -253,6 +254,13 @@ docker compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && npm run build 
 # VM: Run unit tests
 docker compose run --rm gui bash -c "cd /app/gui/scratch-vm && npm test"
 ```
+
+**IMPORTANT: Test Implementation Rule**
+When implementing tests, you MUST ensure both tests and lint pass before committing and pushing:
+1. Build the application if required for integration tests
+2. Run the specific test to verify it passes
+3. Run lint checks to ensure code quality
+4. Only after confirming all tests pass and lint is clean, proceed with commit and push
 
 ### 5. Version Control and Pull Request
 ```bash
