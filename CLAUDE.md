@@ -85,6 +85,7 @@ docker compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && npm exec eslin
 # Run tests
 docker compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && npm test" # lint, unit, build, integration
 docker compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && npm run test:unit" # unit
+docker compose run --rm gui npm exec jest path/to/test.js # specific unit test
 
 # Run integration tests (requires build production bundle first)
 docker compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && npm run test:integration"
