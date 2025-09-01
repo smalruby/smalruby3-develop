@@ -91,7 +91,7 @@ docker compose run --rm gui npm exec jest path/to/test.js # specific unit test
 docker compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && npm run test:integration"
 
 # Run specific integration test (requires build production bundle first)
-docker compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && npm npm run test:integration -- your-test-file.test.js"
+docker compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && npm exec jest test/integration/your-test-file.test.js"
 
 # Setup Opal (Ruby-to-JavaScript transpiler)
 docker compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && npm run setup-opal"
