@@ -14,10 +14,5 @@
   },
   "env": {
     "BASH_DEFAULT_TIMEOUT_MS": "600000"
-  },
-  "statusLine": {
-    "type": "command",
-    "command": "~/.claude/statusline.sh",
-    "padding": 0 // Optional: set to 0 to let status line go to edge
   }
 }
