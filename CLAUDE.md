@@ -65,7 +65,7 @@ docker compose stop gui
 
 ### GUI Development (smalruby3-gui)
 
-**Important**: All npm commands for GUI development must be run inside Docker containers.
+**CRITICAL: ALL npm commands MUST be run inside Docker containers. Never run npm commands directly on the host system.**
 
 ```bash
 # Install dependencies
@@ -76,6 +76,9 @@ docker compose up gui
 
 # Build production bundle (takes ~300 seconds, increase timeout accordingly)
 docker compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && npm run build"
+
+# Build with specific PUBLIC_PATH
+docker compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && PUBLIC_PATH='/smalruby3-gui/' npm run build"
 
 # Run lint
 docker compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && npm run test:lint" # all
@@ -298,9 +301,49 @@ Include in the PR description:
 - **Usage examples**: Code snippets or URL examples
 - **Breaking changes**: If any (with migration guide)
 
+## GitHub Pages publicPath Local Testing
+
+When testing GitHub Pages subdirectory deployments locally (e.g., for `/smalruby3-gui/` path), use the following workflow:
+
+### 1. Build with PUBLIC_PATH
+```bash
+# Build with GitHub Pages subdirectory path (worker paths are automatically fixed)
+docker compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && PUBLIC_PATH=/smalruby3-gui/ npm run build"
+```
+
+**Note**: The build process now includes an automated post-build script (`scripts/postbuild.mjs`) that detects the `PUBLIC_PATH` environment variable and automatically fixes fetch-worker paths. No manual `sed`/`gsed` commands are needed.
+
+### 2. Setup Test Environment
+```bash
+# Create test directory structure
+mkdir -p /private/tmp/github-pages-test/smalruby3-gui
+
+# Copy build output to test structure
+cp -R build/* /private/tmp/github-pages-test/smalruby3-gui/
+
+# Start Python HTTP server
+cd /private/tmp/github-pages-test
+python3 -m http.server 8080
+```
+
+### 3. Test URLs
+- **Main page**: `http://localhost:8080/smalruby3-gui/`
+- **Japanese page**: `http://localhost:8080/smalruby3-gui/ja.html`
+- **Player page**: `http://localhost:8080/smalruby3-gui/player.html`
+
+### 4. Verify Functionality
+1. Open browser developer tools (F12) → Network tab
+2. Click sprite selection button (cat icon in bottom right)
+3. Confirm `fetch-worker.xxxxx.js` loads from `/smalruby3-gui/chunks/` path
+4. Verify no 404 errors for worker files
+5. Test sprite library loads correctly
+
+This workflow replicates the GitHub Pages deployment environment for local testing and debugging.
+
 ## Dependencies
 
 - Node.js for JavaScript components
 - Docker for containerized development
 - Ruby 2.5.3+ for Ruby library
 - Chrome/Chromium for integration testing
+- Node.js for automated post-build processing
