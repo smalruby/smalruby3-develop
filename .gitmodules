@@ -10,3 +10,6 @@
 [submodule "lib/dxruby_sdl"]
 	path = lib/dxruby_sdl
 	url = https://github.com/smalruby/dxruby_sdl.git
+[submodule "infra/smalruby-infra"]
+	path = infra/smalruby-infra
+	url = https://github.com/smalruby/smalruby-infra.git
