@@ -340,6 +340,60 @@ python3 -m http.server 8080
 
 This workflow replicates the GitHub Pages deployment environment for local testing and debugging.
 
+## Cross-Repository Development Workflow
+
+When modifying scratch-vm that affects smalruby3-gui, follow this workflow to ensure proper integration:
+
+### Overview
+The smalruby3-gui depends on scratch-vm as a git submodule. When scratch-vm is updated, smalruby3-gui must be updated to reference the new commit ID.
+
+### Step-by-Step Process
+
+#### 1. scratch-vm Modifications
+1. Create feature branch and implement changes in scratch-vm
+2. Run lint and tests: `npm run lint && npm test`
+3. Commit and push changes
+4. Create PR targeting `develop` branch
+5. **Manually merge PR on GitHub** (this step is done by user)
+
+#### 2. Update smalruby3-gui Dependencies
+After scratch-vm PR is merged to develop:
+
+```bash
+# Update scratch-vm submodule to latest commit
+docker compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && npm update scratch-vm"
+
+# Run lint checks
+docker compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && npm run test:lint"
+
+# Test build to ensure compatibility
+docker compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && npm run build"
+
+# Commit the package-lock.json changes
+git add package-lock.json
+git commit -m "feat: update scratch-vm dependency to latest commit
+
+- Updated package-lock.json to reference latest scratch-vm changes
+- Ensures compatibility with recent scratch-vm modifications
+
+🤖 Generated with [Claude Code](https://claude.ai/code)
+
+Co-Authored-By: Claude <noreply@anthropic.com>"
+
+# Push changes
+git push origin feature-branch-name
+```
+
+#### 3. smalruby3-gui Integration
+1. Create PR for smalruby3-gui targeting `develop` branch
+2. **Manually merge PR on GitHub** (this step is done by user)
+
+### Important Notes
+- Always update smalruby3-gui after scratch-vm changes are merged
+- Test build compatibility before committing dependency updates
+- Both repositories use `develop` as default branch, not `main`
+- Manual PR merges on GitHub are required for both repositories
+
 ## Dependencies
 
 - Node.js for JavaScript components
