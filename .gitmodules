@@ -13,3 +13,6 @@
 [submodule "infra/smalruby-infra"]
 	path = infra/smalruby-infra
 	url = https://github.com/smalruby/smalruby-infra.git
+[submodule "gui/smalruby-koshien"]
+	path = gui/smalruby-koshien
+	url = https://github.com/smalruby/smalruby-koshien.git
