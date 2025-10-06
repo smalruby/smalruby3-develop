@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Gemini Code (gemini.google.com/code) when working with code in this repository.
 
 ## AI Operation 5 Principles
 
@@ -87,7 +87,7 @@ docker compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && npm exec eslin
 
 # Run tests
 docker compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && npm test" # lint, unit, build, integration
-docker compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && npm run test:unit" # unit
+docker compose run --rm gui bash -c "cd /app/smalruby3-gui && npm run test:unit" # unit
 docker compose run --rm gui npm exec jest path/to/test.js # specific unit test
 
 # Run integration tests (requires build production bundle first)
@@ -280,11 +280,7 @@ Details about the implementation, including:
 - How it works
 - Any important implementation details
 
-Fixes #issue-number
-
-🤖 Generated with [Claude Code](https://claude.ai/code)
-
-Co-Authored-By: Claude <noreply@anthropic.com>"
+Co-Authored-By: Gemini <noreply@google.com>"
 
 # Push to remote
 git push origin feature/descriptive-name
@@ -376,9 +372,9 @@ git commit -m "feat: update scratch-vm dependency to latest commit
 - Updated package-lock.json to reference latest scratch-vm changes
 - Ensures compatibility with recent scratch-vm modifications
 
-🤖 Generated with [Claude Code](https://claude.ai/code)
+🤖 Generated with [Gemini Code](https://gemini.google.com/code)
 
-Co-Authored-By: Claude <noreply@anthropic.com>"
+Co-Authored-By: Gemini <noreply@google.com>"
 
 # Push changes
 git push origin feature-branch-name
@@ -401,16 +397,3 @@ git push origin feature-branch-name
 - Ruby 2.5.3+ for Ruby library
 - Chrome/Chromium for integration testing
 - Node.js for automated post-build processing
-
-## Rails Application Notes
-
-### Log Level Configuration
-The Rails application in gui/smalruby-koshien is configured with debug log level by default. When running Rails commands, do not add `RAILS_LOG_LEVEL=debug` as it is redundant.
-
-```bash
-# Correct - uses default debug log level
-bundle exec rails runner script/test_file.rb
-
-# Incorrect - redundant log level specification
-RAILS_LOG_LEVEL=debug bundle exec rails runner script/test_file.rb
-```
