@@ -7,6 +7,8 @@ services:
       - PORT=8601
       - NODE_ENV
       - DEBUG
+      - GOOGLE_CLIENT_ID
+      - GOOGLE_API_KEY
     working_dir: /app/gui/smalruby3-gui
     command: npm start
     volumes:
