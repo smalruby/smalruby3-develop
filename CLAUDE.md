@@ -414,3 +414,32 @@ bundle exec rails runner script/test_file.rb
 # Incorrect - redundant log level specification
 RAILS_LOG_LEVEL=debug bundle exec rails runner script/test_file.rb
 ```
+
+## Google Drive Integration Notes
+
+### CORS Warning Messages
+
+When using the Google Drive file loading feature, you may see the following warning in the browser console:
+
+```
+Cross-Origin-Opener-Policy policy would block the window.opener call.
+```
+
+**This warning can be safely ignored.** Here's why:
+
+- **Source**: The warning comes from Google's own API scripts (gapi)
+- **COOP Policy**: Already configured to `unsafe-none` in webpack.config.js for maximum compatibility
+- **Functionality**: Despite the warning, Google Picker works correctly:
+  - Picker dialog displays
+  - File selection works
+  - File download completes
+  - Project loads successfully
+  - Upload tab functions properly
+
+**Technical Details**:
+- Google's scripts detect the COOP policy and log a warning
+- The `unsafe-none` setting allows `window.opener` calls to proceed
+- The warning is informational and does not block functionality
+- Attempting to suppress this warning may break Google Picker functionality
+
+**Conclusion**: If Google Drive integration is working correctly, this CORS warning is expected behavior and should be ignored in both development and production environments.
