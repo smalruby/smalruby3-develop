@@ -16,3 +16,6 @@
 [submodule "gui/smalruby-koshien"]
 	path = gui/smalruby-koshien
 	url = https://github.com/smalruby/smalruby-koshien.git
+[submodule "infra/mesh-v2"]
+	path = infra/mesh-v2
+	url = https://github.com/smalruby/mesh-v2.git
