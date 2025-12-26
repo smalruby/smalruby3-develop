@@ -9,6 +9,9 @@ services:
       - DEBUG
       - GOOGLE_CLIENT_ID
       - GOOGLE_API_KEY
+      - MESH_GRAPHQL_ENDPOINT
+      - MESH_API_KEY
+      - MESH_AWS_REGION
     working_dir: /app/gui/smalruby3-gui
     command: npm start
     volumes:
