@@ -12,6 +12,7 @@ services:
       - MESH_GRAPHQL_ENDPOINT
       - MESH_API_KEY
       - MESH_AWS_REGION
+      - MESH_MAX_CONNECTION_TIME_SECONDS
     working_dir: /app/gui/smalruby3-gui
     command: npm start
     volumes:
