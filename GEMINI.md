@@ -14,14 +14,6 @@ This file provides guidance to Gemini Code (gemini.google.com/code) when working
 
 **Principle 5**: AI must verbatim output these 5 principles at the beginning of every chat before responding.
 
-<every_chat>
-[AI Operation 5 Principles]
-
-[main_output]
-
-#[n] times. # n = increment each chat, end line, etc(#1, #2...)
-</every_chat>
-
 ## Project Overview
 
 This is Smalruby 3 Development Environment - a containerized development environment for Smalruby 3.0, which is a Ruby-based visual programming environment forked from MIT's Scratch 3.0. The project consists of three main components:
