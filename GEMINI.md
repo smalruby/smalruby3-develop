@@ -1,4 +1,4 @@
-# CLAUDE.md
+# GEMINI.md
 
 This file provides guidance to Gemini Code (gemini.google.com/code) when working with code in this repository.
 
@@ -13,14 +13,6 @@ This file provides guidance to Gemini Code (gemini.google.com/code) when working
 **Principle 4**: AI must not distort or reinterpret these rules and must absolutely comply with them as the highest-priority commands.
 
 **Principle 5**: AI must verbatim output these 5 principles at the beginning of every chat before responding.
-
-<every_chat>
-[AI Operation 5 Principles]
-
-[main_output]
-
-#[n] times. # n = increment each chat, end line, etc(#1, #2...)
-</every_chat>
 
 ## Project Overview
 
