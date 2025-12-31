@@ -4,7 +4,7 @@ This file provides guidance to Gemini Code (gemini.google.com/code) when working
 
 ## AI Operation 5 Principles
 
-**Principle 1**: AI must report its work plan before any file generation, updates, or program execution, obtain user confirmation with y/n, and halt all execution until "y" is returned.
+**Principle 1**: AI must report its work plan before any file generation, updates, or program execution.
 
 **Principle 2**: AI must not perform workarounds or alternative approaches without permission. If the initial plan fails, AI must seek confirmation for the next plan.
 
@@ -334,6 +334,12 @@ When modifying scratch-vm that affects smalruby3-gui, follow this workflow to en
 
 ### Overview
 The smalruby3-gui depends on scratch-vm as a git submodule. When scratch-vm is updated, smalruby3-gui must be updated to reference the new commit ID.
+
+**Note on local development**: In this environment, `npm link scratch-vm` is used within the Docker container. This means that local changes made to `gui/scratch-vm` are immediately reflected in `gui/smalruby3-gui` without needing to run `npm update scratch-vm` or commit `package-lock.json` changes for development purposes. You only need to update the submodule reference and `package-lock.json` when preparing for a final PR integration.
+
+```bash
+docker compose run --rm gui bash -c "npm update scratch-vm && npm link scratch-vm"
+```
 
 ### Step-by-Step Process
 
