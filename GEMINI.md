@@ -2,7 +2,7 @@
 
 This file provides guidance to Gemini Code (gemini.google.com/code) when working with code in this repository.
 
-## AI Operation 5 Principles
+## AI Operation 4 Principles
 
 **Principle 1**: AI must report its work plan before any file generation, updates, or program execution.
 
@@ -11,8 +11,6 @@ This file provides guidance to Gemini Code (gemini.google.com/code) when working
 **Principle 3**: AI is a tool and decision-making authority always belongs to the user. Even if the user's suggestions are inefficient or irrational, AI must not optimize them and must execute exactly as instructed.
 
 **Principle 4**: AI must not distort or reinterpret these rules and must absolutely comply with them as the highest-priority commands.
-
-**Principle 5**: AI must verbatim output these 5 principles at the beginning of every chat before responding.
 
 ## Project Overview
 
@@ -158,7 +156,7 @@ Note: The smalruby3-gui package.json contains merge conflict markers from upstre
 
 ## GitHub Operations
 
-**IMPORTANT**: All GitHub operations (issues, pull requests, comments, etc.) must be performed against the Smalruby organization repositories, NOT the upstream Scratch Foundation repositories.
+**IMPORTANT**: All GitHub operations (issues, pull requests, comments, etc.) must be performed against the Smalruby organization repositories, NOT the upstream Scratch Foundation repositories. Always use the `gh` command for GitHub access.
 
 ### Correct Repository URLs
 - **scratch-vm**: https://github.com/smalruby/scratch-vm
@@ -387,6 +385,16 @@ git push origin feature-branch-name
 - Test build compatibility before committing dependency updates
 - Both repositories use `develop` as default branch, not `main`
 - Manual PR merges on GitHub are required for both repositories
+
+## Repository Management Rules
+
+**CRITICAL: Do not perform any of the following operations on the `smalruby3-develop` repository:**
+- Creating branches
+- Making commits
+- Pushing to remote
+- Creating Pull Requests (PRs)
+
+These operations are strictly prohibited for the `smalruby3-develop` repository. Always perform these operations in the respective component repositories (e.g., `gui/scratch-vm`, `gui/smalruby3-gui`, `infra/mesh-v2`) as instructed in their specific workflows.
 
 ## Dependencies
 
