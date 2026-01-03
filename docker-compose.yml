@@ -14,8 +14,6 @@ services:
       - MESH_AWS_REGION
       - MESH_DATA_UPDATE_INTERVAL_MS
       - MESH_EVENT_BATCH_INTERVAL_MS
-      - MESH_HOST_HEARTBEAT_INTERVAL_SECONDS
-      - MESH_MEMBER_HEARTBEAT_INTERVAL_SECONDS
     working_dir: /app/gui/smalruby3-gui
     command: npm start
     volumes:
