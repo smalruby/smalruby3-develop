@@ -1,0 +1,233 @@
+title: "(ADR Template)"
+labels: [ "ADR-proposed" ]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### ADR (Any Decision Record) - 任意の決定記録 の入力フォーム
+        #### ADRとは
+        ADR（Any Decision Record）は、プロジェクトや組織内で行われる重要な意思決定を文書化したものです。  
+        これには、意思決定の背景、検討された選択肢、最終的な決定、その決定がなされた理由、及び決定に伴う結果や影響が記録されます。  
+        ADRは、プロジェクトの透明性を高め、未来の意思決定の参考になるような知識の蓄積を目的としています。
+
+        (※元々は、アーキテクチャ上の意思決定を記録するためのもの(Architecture Decision Record)ですが、ここではあらゆるものの決定を記録するためのものとして転用します。)
+
+        #### ADRを書く理由
+        - 透明性の確保：
+          - ADRを用いることで、意思決定過程が全チームメンバーにとって透明になります。これにより、意思決定に対する理解と信頼が深まります。
+        - 学習と改善：
+          - 過去の意思決定を記録しておくことで、何がうまく行ったのか、何がうまく行かなかったのかを振り返ることが可能です。この知見を基に、今後のプロジェクトでの意思決定プロセスを改善することができます。
+        - 一貫性の維持：
+          - ADRは同じ問題に対して繰り返し同じような議論を避け、一貫性のある意思決定を支援します。これにより、時間の節約と効率的なリソース利用が可能となります。
+        - 将来の指針として：
+          - 新しいチームメンバーや将来のプロジェクトで同様の問題が発生した場合、過去のADRを参照することで迅速かつ効果的な意思決定が行えます。
+
+        #### 本テンプレートについて
+        - ADR用のlabelの設定
+          - 一覧
+            - `ADR-proposed`: 提案中のADR
+            - `ADR-accepted`: 承認済みのADR
+            - `ADR-deprecated`: 非推奨のADR
+            - `ADR-rejected`: 却下されたADR
+            - `ADR-superseded`: 後続で更新済みのADR
+          - ライフサイクル
+            ```plaintext
+            ADR-proposed -> ADR-accepted -> ADR-superseded
+                         └> ADR-rejected └> ADR-deprecated
+            ```
+        - それ以外の項目はフォームの説明を参照のこと。
+        - 参考元
+          - [MADRのテンプレートファイル](https://github.com/adr/madr/blob/d376c6fdf553d8cc958fb4dd54fb226784711682/template/adr-template.md)
+          - [About MADR (ドキュメント)](https://adr.github.io/madr/)
+
+        #### 参考
+        - [Architectural Decision Records - Homepage of the ADR GitHub organization](https://adr.github.io/)
+        - [peter\-evans/lightweight\-architecture\-decision\-records: Lightweight Architecture Decision Records](https://github.com/peter-evans/lightweight-architecture-decision-records)
+        - [LADR\-template/TEMPLATE\.md at master · moomoo\-ya/LADR\-template](https://github.com/moomoo-ya/LADR-template/blob/master/TEMPLATE.md)
+  - type: textarea
+    id: context-and-problem-statement
+    attributes:
+      label: Context and Problem Statement - コンテキストと問題の説明
+      description: 決めるべき事項や変更の動機となっている問題はどのようなものか、コンテクストや説明を記述してください。例えば、自由形式で2〜3文を使用するか、イラストやストーリー形式で表現します。問題を質問形式で表現し、projectのitemやissue、PRへのリンクを追加してもよいです。
+      value: |
+        <!--
+        決めるべき事項や変更の動機となっている問題はどのようなものか、コンテクストや説明を記述してください。
+        例えば、自由形式で2〜3文を使用するか、イラストやストーリー形式で表現します。
+        問題を質問形式で表現し、projectのitemやissue、PRへのリンクを追加してもよいです。
+
+        例：
+        See: #99
+
+        上記issue進める上で...の解決のため、どのツールを使用すべきか決める必要がある。
+        -->
+    validations:
+      required: true
+  - type: input
+    id: decision-date
+    attributes:
+      label: Decision Date - 決定日付
+      description: 結論が出た日付を入力する項目です。yyyy/MM/dd or TBD (To Be Determined の意)
+      placeholder: yyyy/MM/dd or TBD (To Be Determined の意)
+      value: TBD
+    validations:
+      required: true
+  - type: textarea
+    id: decision-makers
+    attributes:
+      label: Decision Makers - 意思決定者
+      description: 決定に関わる全員をメンションしてください。
+      placeholder: "@user1 @user2 ..."
+      value: |
+        <!-- 決定に関わる全員をメンションしてください。 例： @user1 @user2 ... -->
+    validations:
+      required: true
+  - type: textarea
+    id: decision-drivers
+    attributes:
+      label: Decision Drivers - 決定要因
+      description: (簡易に記載する場合は省略可能) 決定に影響を与えた要因を記述してください。
+      value: |
+        ―
+
+        <!--
+        (簡易に記載する場合は省略可能)
+        決定に影響を与えた要因を記述してください。
+
+        例：
+        - 直面する懸念事項
+        - 対処すべき課題
+        - ...
+        -->
+  - type: textarea
+    id: considered-options
+    attributes:
+      label: Considered Options - 検討した選択肢
+      description: (簡易に記載する場合は省略可能) 検討した選択肢のタイトルやリンクを箇条書きで記述してください。
+      value: |
+        ―
+
+        <!--
+        (簡易に記載する場合は省略可能)
+        検討した選択肢のタイトルやリンクを箇条書きで記述してください。
+
+        例：
+        - 検討した選択肢1のタイトルやリンク
+        - 検討した選択肢2のタイトルやリンク
+        - ...
+        -->
+  - type: textarea
+    id: decision
+    attributes:
+      label: Decision - 決定
+      description: 決定事項、理由、補足を箇ら書きでまとめてください。
+      value: |
+        #### 内容
+
+        #### 理由
+
+        <!--
+        決定事項、理由、補足を箇条書きでまとめてください。
+        決定内容や、選ばれた選択肢のタイトルやリンク
+
+        例：
+        #### 内容
+        - 選ばれた選択肢のタイトルやリンク
+          or
+        - (具体的内容) ...を使用する。
+        - ただし、...の場合は...を使用する。
+
+        #### 理由
+        - 決定要因を満たす唯一の選択肢であるため
+        - 補足に記載されている結果を得られるため
+
+        #### 補足
+        - (任意)
+        -->
+    validations:
+      required: true
+  - type: textarea
+    id: consequences
+    attributes:
+      label: Consequences - 結果
+      description: (簡易に記載する場合は省略可能) この決定により、Goodな点、Badな点、何かしら影響がある点など、理由とともに記載してください。
+      value: |
+        ―
+
+        <!--
+        (簡易に記載する場合は省略可能)
+        この決定により、Goodな点、Badな点、何かしら影響がある点など、理由とともに記載してください。
+
+        例：
+        - Good
+          - 1つ以上の望ましい特性が改善される。なぜならば...
+        - Bad
+          - 1つ以上の望ましい特性が損なわれる。なぜならば...
+        -->
+  - type: textarea
+    id: confirmation
+    attributes:
+      label: Confirmation - 確認
+      description: (簡易に記載する場合は省略可能) ADRの実装/遵守がどのように確認されるかを記述してください。この要素は任意ですが、多くのADRに含まれています。
+      value: |
+        ―
+
+        <!--
+        (簡易に記載する場合は省略可能)
+        ADRの実装/遵守がどのように確認されるかを記述してください。
+        決定したことで、何を実施したか、何をする必要があるか、を記載してください。
+        例として、決定された設計とその実装が決定に合致しているかについては、設計/コードレビューまたはArchUnitのようなライブラリを使用するテストがこれを検証するのに役立ちます。
+        この要素は任意ですが、多くのADRに含まれています。
+
+        例：
+        - [x] ...ドキュメントに記載
+          - link
+        - [ ] 実装の修正
+        -->
+  - type: textarea
+    id: pros-and-cons-of-the-options
+    attributes:
+      label: Pros and Cons of the Options - 選択肢の長所と短所
+      description: (簡易に記載する場合は省略可能) 検討した選択肢の長所と短所を記述してください。
+      value: |
+        ―
+
+        <!--
+        (簡易に記載する場合は省略可能)
+        検討した選択肢の長所と短所を記述してください。
+
+        例：
+        #### 選択肢1
+        説明 と 参照リンク の記載
+
+        - Good
+          - ... なぜならば...
+        - Neutral
+          - ... なぜならば...
+        - Bad
+          - ... なぜならば...
+
+        #### 選択肢2
+        説明 と 参照リンク の記載
+
+        - Bad
+          - ... なぜならば...
+        -->
+  - type: textarea
+    id: more-information
+    attributes:
+      label: More Information - 詳細情報
+      description: (省略可能) 決定の結果に対する追加的な証拠/信頼性を提供するか、チームの決定に対する同意を文書化するか、この決定がいつ/どのように実現されるか、いつ/どのように見直されるかを定義してもよいです。他の決定やリソースへのリンクもここに記載します。
+      value: |
+        ―
+
+        <!--
+        (省略可能)
+        決定の結果に対する追加的な証拠/信頼性を提供するか、チームの決定に対する同意を文書化するか、この決定がいつ/どのように実現されるか、いつ/どのように見直されるかを定義してもよいです。
+        他の決定やリソースへのリンクもここに記載します。
+
+        例：
+        - yyyy/MM/ddから運用開始予定
+        - 今後進める上で...を考慮する必要が出た場合など、また見直しが必要になったら再度議論する。
+        - ...を修正する必要があるかどうかは未検討。
+        - 後続の議論 #999
+        -->
