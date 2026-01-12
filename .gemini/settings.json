@@ -1,7 +1,7 @@
 {
   "general": {
     "previewFeatures": true,
-    "enablePromptCompletion": true
+    "enablePromptCompletion": false
   },
   "model": {
     "name": "gemini-3-flash-preview",
