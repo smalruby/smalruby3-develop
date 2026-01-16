@@ -1,0 +1,34 @@
+# .gemini/commands/smalruby3-gui/update-scratch-vm-hash.toml
+
+description="gui/smalruby3-gui/package-lock.jsonのscratch-vmのコミットIDを更新するタスク"
+prompt = """
+@gui/smalruby3-gui/package-lock.jsonのscratch-vmのコミットIDを更新します。
+
+smalruby3-gui submodule は scratch-vm submodule に依存しています。scratch-vm を更新すると、かならず smalruby3-gui の package-lock.json を更新しないといけません。そうしないと、CIに失敗したり、デプロイしても本番環境で古い scratch-vm を参照してしまいます。
+
+@gui/smalruby3-gui/package-lock.jsonのscratch-vmのコミットIDを更新するためのコマンドは以下のものです。
+
+```bash
+docker compose run --rm gui bash -c "npm update scratch-vm && npm link scratch-vm"
+```
+
+更新後、scratch-vmのコミットIDが正しいかをチェックして、package-lock.jsonをコミットします。
+このとき、もし smalruby3-gui がdevelop以外のブランチであればそのままコミットするだけで完了。
+そうではなく、developブランチであれば、まずは新しいブランチを作成して、コミット。そして、developにマージするためのPRを作成します。
+
+コミットは以下のコマンドを想定しています。
+
+```
+git add package-lock.json
+git commit -m "feat: update scratch-vm dependency to latest commit
+
+- Updated package-lock.json to reference latest scratch-vm changes
+- Ensures compatibility with recent scratch-vm modifications
+
+🤖 Generated with [Gemini Code](https://gemini.google.com/code)
+
+Co-Authored-By: Gemini <noreply@google.com>"
+```
+
+**手元の開発環境の注意点**: この環境において、smalruby3-gui では `npm link scratch-vm` を行うことで、ローカルの scratch-vm を参照しています。そのため、普段開発するときには scratch-vm への変更が即時 smalruby3-gui に反映させるようになっています。つまり、ローカル環境では `npm update scratch-vm` や `package-lock.json` のコミットIDを更新する必要はありません。
+"""
