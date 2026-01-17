@@ -1,0 +1,14 @@
+# .gemini/commands/smalruby3-gui/update-scratch-vm-hash.toml
+
+description="Issueの内容に従って実装を開始するタスク"
+prompt = """
+{{args}} の GitHub Issueの内容を理解して実装します。
+
+https://github.com/smalruby/smalruby3-develop/issues/20 のように末尾がIssueのIDの場合はIssueの説明を元に実装します。
+
+また、 https://github.com/smalruby/smalruby3-develop/issues/20#issuecomment-3753821153 のように末尾にコメントへのハッシュを含む場合は、Issueの説明と当該コメントを読み込んで実装します。
+
+Please use gh command to fetch the issue contents and operation GitHub.
+
+実装後は、lint, commit, push, make PR.
+"""
