@@ -31,6 +31,11 @@ services:
         target: /app/gui/smalruby3-gui/node_modules
     ports:
       - 0.0.0.0:8601:8601
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "3"
   lib:
     platform: linux/amd64
     build: lib
@@ -42,6 +47,11 @@ services:
         target: /app
     ports:
       - 0.0.0.0:15900:5900
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 volumes:
   root_npm:
