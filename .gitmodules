@@ -22,3 +22,6 @@
 [submodule "doc/smalruby.app.wiki"]
 	path = doc/smalruby.app.wiki
 	url = https://github.com/smalruby/smalruby.app.wiki.git
+[submodule "gui/smalruby3-editor"]
+	path = gui/smalruby3-editor
+	url = https://github.com/smalruby/smalruby3-editor.git
