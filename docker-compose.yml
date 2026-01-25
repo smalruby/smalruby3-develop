@@ -1,5 +1,6 @@
 services:
   gui:
+    platform: linux/amd64
     build: gui
     environment:
       - SMALRUBY3_HOST=0.0.0.0
@@ -14,7 +15,7 @@ services:
       - MESH_DATA_UPDATE_INTERVAL_MS
       - MESH_EVENT_BATCH_INTERVAL_MS
     working_dir: /app/gui/smalruby3-editor/packages/scratch-gui
-    shm_size: '2gb'
+    shm_size: '4gb'
     command: npm start
     volumes:
       - type: bind
