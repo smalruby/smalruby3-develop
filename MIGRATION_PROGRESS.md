@@ -29,6 +29,10 @@
 - `reducers/modals.js`, `reducers/menus.js`, `reducers/gui.ts` を Smalruby 仕様に更新
 - `gui.jsx`, `menu-bar.jsx` を Smalruby 仕様（Rubyタブ、各メニュー項目）に更新
 - `react-intl` の `intlShape` 消失に伴い、ローカルの `src/lib/intlShape.js` 参照に修正
+- `gui.jsx` における Redux ロジックの整理と統合
+    - `containers/gui.jsx` にモーダル（URL Loader, Mesh Domain, Smalruby Koshien）の表示・非表示、およびクローズ処理を統合
+    - `URLLoaderHOC` を導入し、`URLLoaderModal` に `onLoadUrl` が渡されない不具合（クラッシュ）を修正
+    - `components/gui/gui.jsx` を純粋なコンポーネントに変換し、Redux への依存を排除
 
 ### Phase 3.4: ビルドスクリプト 移行
 - `postbuild.mjs`, `prepublish.mjs`, `makePWAAssetsManifest.js` を移行
@@ -40,7 +44,7 @@
 
 ## 現状の課題 (Current Issues)
 
-- **未使用 Props**: `gui.jsx` において一部の Smalruby 用 Props が定義されているが、ロジックへの接続が未完了。
+- なし
 
 ---
 
