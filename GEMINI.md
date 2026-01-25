@@ -12,6 +12,8 @@ This file provides guidance to Gemini Code (gemini.google.com/code) when working
 
 **Principle 4**: AI must not distort or reinterpret these rules and must absolutely comply with them as the highest-priority commands.
 
+**Principle 5**: When searching the codebase (e.g., using `grep` or `search_file_content`), AI must always exclude `node_modules` and build artifacts (e.g., `dist`, `build`) to avoid noise and excessive token consumption.
+
 ## Project Overview
 
 This is Smalruby 3 Development Environment - a containerized development environment for Smalruby 3.0, which is a Ruby-based visual programming environment forked from MIT's Scratch 3.0. The project consists of three main components:
@@ -117,6 +119,37 @@ docker compose run --rm gui bash -c "cd /app/gui/scratch-vm && npm run lint"
 docker compose run --rm gui bash -c "cd /app/gui/scratch-vm && npm run docs"
 ```
 
+### Editor Development (smalruby3-editor)
+
+**CRITICAL: You should not use docker compose on gui/smalruby3-editor. All npm commands MUST be run directly on the host system.**
+
+```bash
+# Install dependencies for the monorepo
+cd gui/smalruby3-editor && npm install
+
+# Build all packages in the monorepo
+cd gui/smalruby3-editor && npm run build
+
+# Run all tests in the monorepo
+cd gui/smalruby3-editor && npm test
+
+# Run tests for a specific package (e.g., scratch-vm)
+cd gui/smalruby3-editor/packages/scratch-vm && npm test
+
+# Run specific tap tests in scratch-vm
+cd gui/smalruby3-editor/packages/scratch-vm && npm run tap:unit
+cd gui/smalruby3-editor/packages/scratch-vm && npm run tap:integration
+
+# Run lint for a specific package (e.g., scratch-vm)
+cd gui/smalruby3-editor/packages/scratch-vm && npm run lint
+
+# Integration tests for scratch-gui
+# IMPORTANT: You MUST run build:dev before integration tests if application code has changed.
+# build:dev is faster than build and sufficient for testing.
+cd gui/smalruby3-editor/packages/scratch-gui && npm run build:dev
+cd gui/smalruby3-editor/packages/scratch-gui && npm run test:integration
+```
+
 ### Ruby Library Development (smalruby3)
 
 ```bash
@@ -146,8 +179,8 @@ rake test
 
 The project uses different testing frameworks for different components:
 
-- **GUI**: Jest for unit tests, integration tests with headless Chrome
-- **VM**: TAP testing framework with coverage reporting
+- **GUI (smalruby3-gui)**: Jest for unit tests, integration tests with headless Chrome
+- **VM (scratch-vm and editor monorepo packages)**: TAP testing framework with coverage reporting
 - **Ruby**: Standard Ruby testing with Rake
 
 ## Merge Conflicts
@@ -247,6 +280,8 @@ docker compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && npm run build 
 
 # VM: Run unit tests
 docker compose run --rm gui bash -c "cd /app/gui/scratch-vm && npm test"
+# or for Editor monorepo (run on host)
+cd gui/smalruby3-editor/packages/scratch-vm && npm test
 ```
 
 **IMPORTANT: Test Implementation Rule**
@@ -388,7 +423,8 @@ git push origin feature-branch-name
 
 ## Repository Management Rules
 
-**CRITICAL: Do not perform any of the following operations on the `smalruby3-develop` repository:**
+**CRITICAL: Do not perform any git operations on the `smalruby3-develop` repository unless explicitly instructed by the user.**
+This includes, but is not limited to:
 - Creating branches
 - Making commits
 - Pushing to remote
