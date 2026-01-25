@@ -14,7 +14,7 @@ services:
       - MESH_AWS_REGION
       - MESH_DATA_UPDATE_INTERVAL_MS
       - MESH_EVENT_BATCH_INTERVAL_MS
-    working_dir: /app/gui/smalruby3-gui
+    working_dir: /app/gui/smalruby3-editor/packages/scratch-gui
     shm_size: '4gb'
     command: npm start
     volumes:
@@ -25,11 +25,8 @@ services:
         source: root_npm
         target: /root/.npm
       - type: volume
-        source: scratch-vm_node_modules
-        target: /app/gui/scratch-vm/node_modules
-      - type: volume
-        source: smalruby3-gui_node_modules
-        target: /app/gui/smalruby3-gui/node_modules
+        source: smalruby3-editor_node_modules
+        target: /app/gui/smalruby3-editor/node_modules
     ports:
       - 0.0.0.0:8601:8601
     logging:
@@ -56,5 +53,4 @@ services:
 
 volumes:
   root_npm:
-  scratch-vm_node_modules:
-  smalruby3-gui_node_modules:
+  smalruby3-editor_node_modules:

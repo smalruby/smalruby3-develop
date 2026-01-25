@@ -44,9 +44,6 @@ ENV NODE_OPTIONS --max-old-space-size=4000
 
 EXPOSE 8601
 
-# node_modulesをvolumeとしてマウントするが、scratch-vmのnpm linkは保持されないため、このタイミングで作成しておく
-RUN mkdir -p /usr/local/lib/node_modules/ && ln -sf ../../../../app/gui/scratch-vm /usr/local/lib/node_modules/scratch-vm
-
 COPY entrypoint.sh /app/gui/entrypoint.sh
 RUN chmod +x /app/gui/entrypoint.sh
 ENTRYPOINT ["/app/gui/entrypoint.sh"]
