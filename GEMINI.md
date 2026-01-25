@@ -191,6 +191,8 @@ Note: The smalruby3-gui package.json contains merge conflict markers from upstre
 
 **IMPORTANT**: All GitHub operations (issues, pull requests, comments, etc.) must be performed against the Smalruby organization repositories, NOT the upstream Scratch Foundation repositories. Always use the `gh` command for GitHub access.
 
+**IMPORTANT: Message Escaping Rule**: When using the `gh` command to create issues or pull requests, always store the commit message or PR description in a temporary file first, and then use the `-F` (or `--body-file`) and `-F` (or `--title-file`) flags. Do not pass long or complex messages directly as command-line arguments to avoid shell escaping issues.
+
 ### Correct Repository URLs
 - **scratch-vm**: https://github.com/smalruby/scratch-vm
 - **smalruby3-gui**: https://github.com/smalruby/smalruby3-gui
