@@ -121,33 +121,36 @@ docker compose run --rm gui bash -c "cd /app/gui/scratch-vm && npm run docs"
 
 ### Editor Development (smalruby3-editor)
 
-**CRITICAL: You should not use docker compose on gui/smalruby3-editor. All npm commands MUST be run directly on the host system.**
+**CRITICAL: ALL npm commands MUST be run inside Docker containers. Never run npm commands directly on the host system.**
 
 ```bash
 # Install dependencies for the monorepo
-cd gui/smalruby3-editor && npm install
+docker compose run --rm gui bash -c "cd /app/gui/smalruby3-editor && npm install"
 
 # Build all packages in the monorepo
-cd gui/smalruby3-editor && npm run build
+docker compose run --rm gui bash -c "cd /app/gui/smalruby3-editor && npm run build"
+
+# Build in development mode
+docker compose run --rm gui bash -c "cd /app/gui/smalruby3-editor && npm run build:dev"
 
 # Run all tests in the monorepo
-cd gui/smalruby3-editor && npm test
+docker compose run --rm gui bash -c "cd /app/gui/smalruby3-editor && npm test"
 
 # Run tests for a specific package (e.g., scratch-vm)
-cd gui/smalruby3-editor/packages/scratch-vm && npm test
+docker compose run --rm gui bash -c "cd /app/gui/smalruby3-editor/packages/scratch-vm && npm test"
 
 # Run specific tap tests in scratch-vm
-cd gui/smalruby3-editor/packages/scratch-vm && npm run tap:unit
-cd gui/smalruby3-editor/packages/scratch-vm && npm run tap:integration
+docker compose run --rm gui bash -c "cd /app/gui/smalruby3-editor/packages/scratch-vm && npm run tap:unit"
+docker compose run --rm gui bash -c "cd /app/gui/smalruby3-editor/packages/scratch-vm && npm run tap:integration"
 
 # Run lint for a specific package (e.g., scratch-vm)
-cd gui/smalruby3-editor/packages/scratch-vm && npm run lint
+docker compose run --rm gui bash -c "cd /app/gui/smalruby3-editor/packages/scratch-vm && npm run lint"
 
 # Integration tests for scratch-gui
 # IMPORTANT: You MUST run build:dev before integration tests if application code has changed.
 # build:dev is faster than build and sufficient for testing.
-cd gui/smalruby3-editor/packages/scratch-gui && npm run build:dev
-cd gui/smalruby3-editor/packages/scratch-gui && npm run test:integration
+docker compose run --rm gui bash -c "cd /app/gui/smalruby3-editor/packages/scratch-gui && npm run build:dev"
+docker compose run --rm gui bash -c "cd /app/gui/smalruby3-editor/packages/scratch-gui && npm run test:integration"
 ```
 
 ### Ruby Library Development (smalruby3)
@@ -282,8 +285,8 @@ docker compose run --rm gui bash -c "cd /app/gui/smalruby3-gui && npm run build 
 
 # VM: Run unit tests
 docker compose run --rm gui bash -c "cd /app/gui/scratch-vm && npm test"
-# or for Editor monorepo (run on host)
-cd gui/smalruby3-editor/packages/scratch-vm && npm test
+# or for Editor monorepo
+docker compose run --rm gui bash -c "cd /app/gui/smalruby3-editor/packages/scratch-vm && npm test"
 ```
 
 **IMPORTANT: Test Implementation Rule**
