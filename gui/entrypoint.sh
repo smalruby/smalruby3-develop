@@ -6,6 +6,7 @@ if [ ! -e /app/gui/built-monorepo ]; then
     npm install
     cd packages/scratch-gui
     npm run setup:opal
+    npx playwright install chromium --with-deps
     touch /app/gui/built-monorepo
   )
 fi

@@ -22,6 +22,9 @@ RUN \
     libosmesa6 \
     fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-freefont-ttf libxss1
 
+# Install Playwright and its dependencies
+RUN npx playwright install chromium --with-deps
+
 # Link chromium to google-chrome just in case
 RUN ln -s /usr/bin/chromium /usr/bin/google-chrome
 
