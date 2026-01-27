@@ -24,6 +24,9 @@ services:
         source: root_npm
         target: /root/.npm
       - type: volume
+        source: root_cache
+        target: /root/.cache
+      - type: volume
         source: smalruby3-editor_node_modules
         target: /app/gui/smalruby3-editor/node_modules
     ports:
@@ -52,4 +55,5 @@ services:
 
 volumes:
   root_npm:
+  root_cache:
   smalruby3-editor_node_modules:
